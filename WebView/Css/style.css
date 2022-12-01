@@ -45,7 +45,12 @@
     text-decoration: none;
     font-weight: bold;
 }
-.button{
+.button:hover{
+    background-color:blue;
+
+}
+
+    .button{
     position:relative;
     left:400px;
     bottom:260px;
@@ -71,6 +76,7 @@
     font-size: 25px;
     border-radius: 20px;
     text-align:center;
+    box-shadow:rgba(0,0,0,0) 10px 10px inherit;
 }
 .LblCatName {
     position: relative;
