@@ -14,15 +14,15 @@ namespace WebView
     {
         bool TextChanged = false;
         SqlConnection conn = new SqlConnection(DataSource.DS);
-        SqlCommand cmd= new SqlCommand();
+        SqlCommand cmd = new SqlCommand();
         string query;
-        DataTable DT =new DataTable();
-        DataSet DS=new DataSet();
+        DataTable DT = new DataTable();
+        DataSet DS = new DataSet();
         protected void Page_Load(object sender, EventArgs e)
         {
-            
-            
-            LblResult.Visible= false;
+
+
+            LblResult.Visible = false;
         }
 
         protected void BtnSearch_Click(object sender, EventArgs e)
@@ -33,37 +33,40 @@ namespace WebView
 
         private void MetGrd()
         {
-            if(TextChanged)
+            if (TextChanged)
             {
                 Session["data"] = null;
             }
 
 
-            if (Session["data"]==null)
+            if (Session["data"] == null)
             {
 
-            
-              if (conn.State != ConnectionState.Open)
-              {
-                conn.Open();
-              }
-               query = "select*from CatProView where CategoryName='" + TxtSearch.Text + "'";
-               cmd = new SqlCommand(query, conn);
-               SqlDataAdapter DA = new SqlDataAdapter(cmd);
-               DA.Fill(DS);
-               Session["data"] = DS.Tables[0].DefaultView;
-               GrdResult.DataSource = Session["data"]; 
-           
-               if (DS.Tables[0].Rows.Count == 0)
-               {
-                LblResult.Text = "There is no data such as this CategoryName";
-                GrdResult.Visible = false;
-                LblResult.Visible = true;
-               }
+
+                if (conn.State != ConnectionState.Open)
+                {
+                    conn.Open();
+                }
+                query = "select*from CatProView where CategoryName='" + TxtSearch.Text + "'";
+                cmd = new SqlCommand(query, conn);
+                SqlDataAdapter DA = new SqlDataAdapter(cmd);
+                DA.Fill(DS);
+                Session["data"] = DS.Tables[0].DefaultView;
+                GrdResult.DataSource = Session["data"];
+
+                if (DS.Tables[0].Rows.Count == 0)
+                {
+                    LblResult.Text = "There is no data such as this CategoryName";
+                    GrdResult.Visible = false;
+                    LblResult.Visible = true;
+                    Session["data"] = null;
+                    return;
+                }
                 conn.Close();
 
             }
 
+            GrdResult.DataSource = Session["data"];
             GrdResult.DataBind();
             GrdResult.Visible = true;
             LblResult.Visible = false;

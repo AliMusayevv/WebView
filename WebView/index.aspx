@@ -21,7 +21,7 @@
         </div>
         <div>
             <asp:GridView ID="GrdResult" runat="server" CssClass="mydatagrid" PagerStyle-CssClass="pager"
-                HeaderStyle-CssClass="header" RowStyle-CssClass="rows" AllowPaging="True" OnPageIndexChanging="GrdResult_PageIndexChanging" PageSize="6">
+                HeaderStyle-CssClass="header" RowStyle-CssClass="rows" AllowPaging="True" OnPageIndexChanging="GrdResult_PageIndexChanging" PageSize="3">
             </asp:GridView>
         </div>
         
