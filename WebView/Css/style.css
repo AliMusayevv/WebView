@@ -76,7 +76,8 @@
     font-size: 25px;
     border-radius: 20px;
     text-align:center;
-    box-shadow:rgba(0,0,0,0) 10px 10px inherit;
+    box-shadow:rgba(0,0,0,0) 10px 10px inset;
+    border:3px solid black;
 }
 .LblCatName {
     position: relative;
